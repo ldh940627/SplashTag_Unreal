@@ -98,10 +98,7 @@ private:
 protected:
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UPlayerStateText> W_PlayerStateText;
-
-	// UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	// TObjectPtr<class USpeedBar> W_SpeedBar;
-
+	
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UStaminaBar> W_StaminaBar;
 
@@ -110,10 +107,7 @@ protected:
 	
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UPlayerItemSlot> W_PlayerHandSlot;
-
-	// UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	// TObjectPtr<class UPlayerItemSlot> W_PlayerBagSlot;
-
+	
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Tb_RemainMinute;
 

@@ -124,26 +124,28 @@ void USTAbilitySystemComponent::AbilityInputReleased(const FGameplayTag& InputTa
 void USTAbilitySystemComponent::AbilityInputToggle(const FGameplayTag& InputTag)
 {
 	if (!InputTag.IsValid()) return;
-
+	
 	ABILITYLIST_SCOPE_LOCK()
-
+	
 	for (FGameplayAbilitySpec& Spec : GetActivatableAbilities())
 	{
 		if (Spec.DynamicAbilityTags.HasTagExact(InputTag))
 		{
-			if (Spec.IsActive())
+			const bool bActive = Spec.IsActive();
+			InvokeReplicatedEvent(bActive ? EAbilityGenericReplicatedEvent::InputReleased
+										 : EAbilityGenericReplicatedEvent::InputPressed,
+								 Spec.Handle, Spec.ActivationInfo.GetActivationPredictionKey());
+			if (bActive)
 			{
-				// 실행 중이면 취소
 				CancelAbilityHandle(Spec.Handle);
 			}
 			else
 			{
-				// 실행 중이 아니면 실행
 				TryActivateAbility(Spec.Handle);
 			}
-			return; // 하나만 처리하고 끝
+			return;
 		}
-	}
+   }
 }
 
 void USTAbilitySystemComponent::GrantRunnerWaterGunAbility(const TArray<FPlayerAbilitySet>& WaterGunAbilities,

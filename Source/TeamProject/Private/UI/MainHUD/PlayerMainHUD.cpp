@@ -25,12 +25,6 @@ void UPlayerMainHUD::NativeConstruct()
 	{		
 		W_PlayerHandSlot->SetSlotTypeText(FText::FromString(TEXT("Hands")));
 	}
-
-	// if (W_PlayerBagSlot)
-	// {
-	// 	W_PlayerBagSlot->SetSlotTypeText(FText::FromString(TEXT("Bag")));
-	// }
-
 }
 
 void UPlayerMainHUD::SetHandSlotText(FText Text)
@@ -62,24 +56,6 @@ void UPlayerMainHUD::UpdateWeaponStatusUI()
 		W_PlayerHandSlot->UpdateWeaponStatusUI();
 	}
 }
-
-// void UPlayerMainHUD::SetBagSlotText(FText Text)
-// {
-// 	if (W_PlayerBagSlot)
-// 		W_PlayerBagSlot->SetItemName(Text);
-// }
-//
-// void UPlayerMainHUD::ChangeItemSlot()
-// {
-// 	if (nullptr == W_PlayerHandSlot || nullptr == W_PlayerBagSlot)
-// 		return;
-//
-// 	FText HandSlotText = W_PlayerHandSlot->GetItemName();
-// 	FText BagSlotText = W_PlayerBagSlot->GetItemName();
-//
-// 	W_PlayerHandSlot->SetItemName(BagSlotText);
-// 	W_PlayerBagSlot->SetItemName(HandSlotText);
-// }
 
 void UPlayerMainHUD::UpdateRemainTime(int Second)
 {
